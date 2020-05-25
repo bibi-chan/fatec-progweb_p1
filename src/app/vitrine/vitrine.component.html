@@ -1,1 +1,31 @@
+<div class="welcome">
+  <div class="col-12 text-center my-3">
+    <img src="../../assets/images/welcome.jpeg" />
+  </div>
+</div>
+
+<section class="sales">
+  <div class="container text-center py-5">
+    <div id="filtersButtons" class="pb-3">
+      <button class="btn filt active" onclick="filterSelection('all')">
+        Show All
+      </button>
+      <button class="btn filt" onclick="filterSelection('food')">Food</button>
+      <button class="btn filt" onclick="filterSelection('care')">Care</button>
+      <button class="btn filt" onclick="filterSelection('fitness')">
+        Fitness
+      </button>
+    </div>
+
+    <div class="row products" id="products">
+      <div class="product col-4" *ngFor="let image of products">
+        <div class="content mx-2 my-4">
+          <img src="{{ image.img }}" />
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 <app-newsletter></app-newsletter>

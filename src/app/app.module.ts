@@ -7,6 +7,7 @@ import { VitrineComponent } from './vitrine/vitrine.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { NewsletterComponent } from './shared/newsletter/newsletter.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { NewsletterComponent } from './shared/newsletter/newsletter.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

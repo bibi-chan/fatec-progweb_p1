@@ -1,0 +1,115 @@
+@media (min-width: 320px) {
+  .welcome {
+    img {
+      width: 90%;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .welcome {
+    img {
+      width: 80%;
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .welcome {
+    img {
+      width: 50%;
+    }
+  }
+
+  /* Sales */
+  .products {
+    margin: 10px -16px;
+
+    .products,
+    .products > .product {
+      padding: 8px;
+    }
+    .products:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    .product {
+      // display: none; /* Hide all elements by default */
+      .content {
+        display: flex;
+        align-content: center;
+        flex-wrap: wrap;
+          img {
+            width: 30%;
+            flex: 1;
+          }
+      }
+
+      h4 {
+        font-family: "Gaegu-Bold", cursive !important;
+        font-size: 1.6em;
+        margin-top: 1.2em;
+        margin-bottom: 0.5em;
+      }
+      p {
+        font-size: 1.2em;
+      }
+
+      i {
+        font-size: 1.5em;
+      }
+    }
+  }
+
+  .btn-detail {
+    background-color: transparent;
+  }
+
+  .btn-detail:hover {
+    background-color: #d7eef4;
+  }
+
+  .overlay-details {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: 0.5s ease;
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+
+  .product:hover .overlay-details {
+    opacity: 1;
+  }
+
+  .show {
+    display: block;
+  }
+
+  .filt {
+    font-family: "Gaegu-Bold", cursive !important;
+    font-size: 1.5em;
+    color: #60bcd3;
+    border: none;
+    outline: none;
+    padding: 12px 16px;
+    background-color: white;
+    cursor: pointer;
+  }
+
+  .filt:hover {
+    background-color: #d7eef4;
+    color: #60bcd3;
+  }
+
+  .filt.active {
+    background-color: #60bcd3;
+    color: white;
+  }
+}

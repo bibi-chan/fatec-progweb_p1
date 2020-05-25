@@ -76,6 +76,9 @@
         font-size: 1.2em;
       }
     }
+    .dropdown-toggle::after {
+      display:none;
+  }
 
     .dropdown-item:hover {
       color: #60bcd3;

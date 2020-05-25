@@ -10,7 +10,7 @@
           <div class="menu-logo">
           </div>
           <div class="menu">
-              <div class="input-group px-5">
+              <div class="input-group mt-2 px-5">
                   <input type="text" class="form-control" placeholder="Search" id="searchProduct" onkeyup="searchFunction()">
                   <div class="input-group-append">
                       <button class="btn btn-blue" type="submit"><i class="fa fa-search"></i></button>
@@ -18,12 +18,12 @@
               </div>
           </div>
           <div class="menu mt-2">
-              <div class="dropdown">
-                  <button type="button" class="btn btn-transp" data-toggle="dropdown"><i class="user-icon"></i>
+              <div ngbDropdown class="dropdown">
+                  <button ngbDropdownToggle type="button" class="btn btn-transp"><i class="user-icon"></i>
                   </button>
-                  <div class="dropdown-menu">
-                      <a class="dropdown-item" href="#">Sign in</a>
-                      <a class="dropdown-item" href="#">Sign up</a>
+                  <div ngbDropdownMenu class="dropdown-menu">
+                      <a ngbDropdownItem class="dropdown-item" href="#">Sign in</a>
+                      <a ngbDropdownItem lass="dropdown-item" href="#">Sign up</a>
                   </div>
                   <a href="#" class="ml-lg-3 basket"><i class="fa fa-shopping-cart"></i></a>
               </div>
