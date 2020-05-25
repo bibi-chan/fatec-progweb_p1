@@ -1,0 +1,71 @@
+
+/*Newsletter*/
+
+.newsletter {
+  background: #D7EEF4;
+  padding: 60px calc((100% - 960px) / 2);
+  display: flex;
+  flex-wrap: wrap;
+
+  input {
+    font-family: sans-serif !important;
+  }
+
+  h1 {
+    font-family: 'Gaegu-Regular', cursive !important;
+    font-size: 3em;
+    font-weight: bold;
+    color: #60bcd3;
+  }
+
+  p {
+    font-family: 'Gaegu-Regular', cursive !important;
+    font-size: 1.5em;
+    max-width: 230px;
+    color: #60bcd3;
+    margin-bottom: 10px;
+  }
+
+.newsletter-form {
+  align-self: center;
+  display: flex;
+  flex-wrap: wrap;
+
+input {
+  font-size: 1em;
+  height: 3.5em;
+  font-style: italic;
+  border: 4px solid #60bcd3;
+  background: #f7f7f7;
+}
+
+button {
+  font-family: 'Gaegu-Bold', cursive !important;
+  font-size: 1.5em;
+  text-transform: uppercase;
+  color: white;
+  cursor: pointer;
+  border: none;
+}
+
+button:hover {
+  background-color: #fff;
+  color: #60bcd3;
+}
+
+}
+
+.btn-blue {
+  background: #60bcd3;
+  color: #fff;
+}
+}
+
+
+
+@media (max-width: 600px) {
+  .newsletter-form button {
+      font-size: 1.5em;
+  }
+}
+

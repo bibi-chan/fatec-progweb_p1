@@ -1,0 +1,137 @@
+.header {
+  top: 0;
+}
+@media (min-width: 320px) {
+  /*PromoInfo*/
+  .promoInfo-bg {
+    background: #60bcd3;
+    color: #fff;
+    .promoInfo {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      p {
+        text-align: center;
+        font-family: sans-serif !important;
+      }
+    }
+  }
+
+  /*Menu*/
+
+  .menu-bg {
+    background: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+    input {
+      font-family: sans-serif !important;
+    }
+
+    .btn-blue {
+      background: #60bcd3;
+      color: #fff;
+    }
+
+    .btn-blue:hover {
+      background-color: #d7eef4;
+      color: #60bcd3;
+    }
+    a {
+      color: #60bcd3;
+      font-size: 2.25em;
+      text-decoration: none;
+      text-align: center;
+    }
+    .btn-transp {
+      background-color: transparent;
+    }
+
+    .user-icon {
+      content: url("../../../assets/images/user.png");
+      width: 42px;
+      height: 36px;
+    }
+    .user-icon:hover {
+      content: url("../../../assets/images/userhover.png");
+    }
+    .menu-logo {
+      content: url("../../../assets/images/logo.png");
+      width: 90%;
+    }
+
+    // .user-icon.active {
+    //   // content: url("images/userhover.png");
+    // }
+
+    .basket:hover {
+      color: #d7eef4;
+    }
+    .dropdown {
+      display: flex;
+      align-items: center;
+      i {
+        font-size: 1.2em;
+      }
+    }
+
+    .dropdown-item:hover {
+      color: #60bcd3;
+      background-color: #d7eef4;
+    }
+
+    .dropdown-menu {
+      font-size: 0.7em;
+    }
+  }
+
+  button:focus {
+    outline: none;
+  }
+}
+
+@media (min-width: 768px) {
+  /*PromoInfo*/
+  .promoInfo-bg {
+    .promoInfo {
+      p {
+        font-size: 0.9em;
+      }
+    }
+  }
+
+  /*Menu*/
+
+  .menu-bg {
+
+    a {
+      font-size: 2.25em;
+    }
+
+    .menu-logo {
+      max-width: 30%;
+    }
+
+    .dropdown {
+      display: flex;
+      align-items: center;
+      i {
+        font-size: 1.2em;
+      }
+    }
+
+    .dropdown-menu {
+      font-size: 0.7em;
+    }
+  }
+}
+
+
+@media (min-width: 1400px) {
+  .menu-logo {
+    max-width: 25%;
+    max-height: 80%;
+  }
+}

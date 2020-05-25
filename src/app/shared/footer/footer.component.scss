@@ -1,0 +1,44 @@
+/*Footer*/
+
+.footer {
+  bottom: 0;
+  display: flex;
+  background: #60bcd3;
+  align-items: center;
+  h4 {
+    flex: 1;
+    font-family: "Gaegu-Regular", cursive !important;
+    text-align: left;
+    color: #fff;
+  }
+  p {
+    flex: 1;
+    font-family: "Gaegu-Regular", cursive !important;
+    text-align: left;
+    color: #fff;
+    font-size: 1.2em;
+  }
+  i {
+    float: 1;
+    color: #fff;
+    font-size: 2em;
+  }
+  a {
+    text-decoration: none;
+  }
+  .last {
+    p {
+      flex: 1;
+      font-family: "Gaegu-Regular", cursive !important;
+      text-align: center;
+      color: #fff;
+      font-size: 1.2em;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .footer {
+    height: 300px;
+  }
+}
