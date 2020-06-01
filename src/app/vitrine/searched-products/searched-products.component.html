@@ -1,0 +1,23 @@
+<div class="container text-center">
+<input type="text" class="form-control" placeholder="Search" [(ngModel)]="term">
+<h4 class="pt-5">Searched for: {{ term }}</h4>
+<div class="row products" id="products">
+  <div class="product col-4" *ngFor="let product of products | filter:term; index as i">
+    <div class="content mx-2 my-4">
+      <img src="{{ product.img }}" />
+      <div class="overlay-details">
+        <h4 class="pb-4">{{ product.name }}</h4>
+        <button type="submit" class="btn btn-detail">
+          <p>+ Details</p>
+      </button>
+        <div class="row justify-content-center mt-5">
+          <p class="mx-3 mt-2">$ {{ product.price }}</p>
+          <button class="btn btn-blue" type="submit">
+            <i class="fa fa-cart-plus mx-3"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

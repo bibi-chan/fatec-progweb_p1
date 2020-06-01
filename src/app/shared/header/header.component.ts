@@ -3,10 +3,6 @@ import { Component, OnInit, Output, EventEmitter} from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { LoginModalComponent } from '../login-modal/login-modal.component';
 import { CreateAccountComponent } from '../create-account/create-account.component';
-import { Observable } from 'rxjs';
-import { FormControl } from '@angular/forms';
-import { DecimalPipe } from '@angular/common';
-import { map, startWith } from 'rxjs/operators';
 
 @Component({
   selector: 'app-header',
@@ -15,17 +11,15 @@ import { map, startWith } from 'rxjs/operators';
 })
 export class HeaderComponent implements OnInit {
 @Output() emitClickSearch = new EventEmitter();
-products$: Observable<any[]>;
-filter = new FormControl('');
+products;
+term: string;
 
-  constructor(private modalService: NgbModal, pipe: DecimalPipe, private productsService: ProductsService) {
-    this.products$ = this.filter.valueChanges.pipe(
-      startWith(''),
-      map(text => this.productsService.search(text, pipe))
-    );
+  constructor(private modalService: NgbModal,  private productsService: ProductsService) {}
+
+  ngOnInit(): void {
+    this.products = this.productsService.getProducts();
+
   }
-
-  ngOnInit(): void {}
 
   open() {
     this.modalService.open(LoginModalComponent, {

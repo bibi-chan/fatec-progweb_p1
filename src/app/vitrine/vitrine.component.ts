@@ -12,8 +12,9 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./vitrine.component.scss']
 })
 export class VitrineComponent implements OnInit {
-categories;
 products;
+term: string;
+fitness: 'fitness';
 // filter = new FormControl('');
 
   constructor(private productsService: ProductsService, private modalService: NgbModal, pipe: DecimalPipe)
@@ -26,7 +27,6 @@ products;
 
   ngOnInit(): void {
     this.products = this.productsService.getProducts();
-    this.performFilter();
   }
 
   openDetail(product) {
@@ -35,11 +35,6 @@ products;
     });
     modalRef.componentInstance.product = product;
     console.log(product);
-  }
-
-  performFilter() {
-  this.productsService.performFilter(this.categories);
-
   }
 }
 

@@ -10,15 +10,15 @@
       <button class="btn filt active">
         Show All
       </button>
-      <button class="btn filt">Food</button>
-      <button class="btn filt">Care</button>
-      <button class="btn filt">Fitness</button>
+      <button type="button" class="btn filt">Food</button>
+      <button type="button" class="btn filt">Care</button>
+      <button type="button" class="btn filt">Fitness</button>
     </div>
 
-      <input type="text" class="form-control" placeholder="Search">
+      <!-- <input type="text" class="form-control" placeholder="Search" [(ngModel)]="term"> -->
 
     <div class="row products" id="products">
-      <div class="product col-4" *ngFor="let product of products; index as i">
+      <div class="product col-4" *ngFor="let product of products | filter:term; index as i">
         <div class="content mx-2 my-4">
           <img src="{{ product.img }}" />
           <div class="overlay-details">
@@ -38,5 +38,4 @@
     </div>
   </div>
 </section>
-<!-- <app-product-detail [products]="products"></app-product-detail> -->
 <app-newsletter></app-newsletter>

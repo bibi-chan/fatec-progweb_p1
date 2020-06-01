@@ -17,7 +17,9 @@ import { CreateAccountComponent } from './shared/create-account/create-account.c
 import { BasketComponent } from './shared/basket/basket.component';
 import { DecimalPipe } from '@angular/common';
 import { ProductDetailComponent } from './vitrine/product-detail/product-detail.component';
-import { BasicFoodComponent } from './vitrine/basic-food/basic-food.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { SearchedProductsComponent } from './vitrine/searched-products/searched-products.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +33,7 @@ import { BasicFoodComponent } from './vitrine/basic-food/basic-food.component';
     CreateAccountComponent,
     BasketComponent,
     ProductDetailComponent,
-    BasicFoodComponent
+    SearchedProductsComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +42,8 @@ import { BasicFoodComponent } from './vitrine/basic-food/basic-food.component';
     NgBootstrapFormValidationModule.forRoot(),
     NgBootstrapFormValidationModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    Ng2SearchPipeModule
   ],
   providers: [FormBuilder, DecimalPipe, NgbActiveModal],
   bootstrap: [AppComponent]
