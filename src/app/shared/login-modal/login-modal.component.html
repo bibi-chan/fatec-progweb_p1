@@ -1,0 +1,35 @@
+<div class="modal-header">
+  <h4 class="modal-title"><strong>SIGN IN</strong></h4>
+  <button
+    type="button"
+    class="close"
+    aria-label="Close"
+    (click)="activeModal.dismiss('Cross click')"
+  >
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<form class="needs-validation" novalidate>
+  <form action="" [formGroup]="formLogin">
+<div class="modal-body">
+  <p>E-mail</p>
+  <input type="email" class="form-control" placeholder="E-mail" formControlName="email"/>
+  <div class="invalid-feedback">Please fill out this field correctly.</div>
+  <p class="mt-4">Password:</p>
+<input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd" formControlName="passwd">
+<div class="invalid-feedback">Please fill out this field correctly.</div>
+  <p class="mt-2">
+    <a (click)="openForgotPassword()">I Forgot My Password :(</a>
+  </p>
+</div>
+<div class="modal-footer">
+  <button
+    type="submit"
+    class="btn btn-blue btn-lg"
+    (click)="action()"
+  >
+    LOGIN
+  </button>
+</div>
+</form>
+</form>

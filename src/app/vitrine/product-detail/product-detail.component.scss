@@ -1,0 +1,43 @@
+@media (min-width: 320px) {
+  .modal-header {
+    background-color: #d7eef4;
+  }
+  .modal-title {
+    color: #60bcd3;
+  }
+  .modal-body {
+    font-size: 1.35em;
+    font-weight: bolder;
+    color: #60bcd3;
+  }
+  .modal-footer {
+   h4 {
+     font-family: sans-serif;
+   }
+  }
+  p {
+    color: #212529;
+    margin-bottom: 0;
+  }
+  a {
+    cursor: pointer;
+  }
+  .btn-blue {
+    background: #60bcd3;
+    color: #fff;
+  }
+  .btn-blue:hover {
+    background-color: #d7eef4;
+    color: #60bcd3;
+  }
+  img {
+    width: 70%;
+    float: left;
+  }
+}
+
+@media (min-width: 1024px) {
+   img {
+      width: 40%;
+    }
+}

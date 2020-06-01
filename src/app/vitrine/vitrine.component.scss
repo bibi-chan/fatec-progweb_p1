@@ -4,67 +4,54 @@
       width: 90%;
     }
   }
-}
-
-@media (min-width: 768px) {
-  .welcome {
-    img {
-      width: 80%;
-    }
-  }
-}
-
-@media (min-width: 1024px) {
-  .welcome {
-    img {
-      width: 50%;
-    }
-  }
-
   /* Sales */
   .products {
-    margin: 10px -16px;
-
-    .products,
-    .products > .product {
-      padding: 8px;
-    }
-    .products:after {
-      content: "";
-      display: table;
-      clear: both;
-    }
-
     .product {
       // display: none; /* Hide all elements by default */
       .content {
         display: flex;
         align-content: center;
         flex-wrap: wrap;
-          img {
-            width: 30%;
-            flex: 1;
-          }
+        img {
+          width: 30%;
+          flex: 1;
+        }
       }
 
       h4 {
-        font-family: "Gaegu-Bold", cursive !important;
+        font-weight: bolder;
         font-size: 1.6em;
         margin-top: 1.2em;
         margin-bottom: 0.5em;
       }
       p {
         font-size: 1.2em;
+        font-family: sans-serif !important;
       }
-
       i {
         font-size: 1.5em;
       }
+    }
+    .btn-blue {
+      background: #60bcd3;
+      color: #fff;
+    }
+
+    .btn-blue:hover {
+      background-color: #d7eef4;
+      color: #60bcd3;
     }
   }
 
   .btn-detail {
     background-color: transparent;
+    font-family: sans-serif !important;
+    align-content: center;
+    border-color: #d7eef4;
+    border-width: 5px;
+    p {
+      margin: 0;
+    }
   }
 
   .btn-detail:hover {
@@ -111,5 +98,21 @@
   .filt.active {
     background-color: #60bcd3;
     color: white;
+  }
+}
+
+@media (min-width: 768px) {
+  .welcome {
+    img {
+      width: 80%;
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .welcome {
+    img {
+      width: 50%;
+    }
   }
 }

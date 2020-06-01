@@ -1,17 +1,17 @@
 
 <div class="header">
 <div class="promoInfo-bg">
-      <div class="promoInfo pt-3">
+      <div class="promoInfo">
           <p>FREE SHIPPING ON PURCHASES OVER $150! · ALL UP TO 6X ON CREDIT CARD</p>
       </div>
   </div>
 
-  <div class="container-fluid menu-bg mt-3">
-          <div class="menu-logo">
+  <div class="container-fluid menu-bg mb-5">
+          <div class="menu-logo" [routerLink]="['']">
           </div>
           <div class="menu">
               <div class="input-group mt-2 px-5">
-                  <input type="text" class="form-control" placeholder="Search" id="searchProduct" onkeyup="searchFunction()">
+                  <input type="text" class="form-control" placeholder="Search" [formControl]="filter">
                   <div class="input-group-append">
                       <button class="btn btn-blue" type="submit"><i class="fa fa-search"></i></button>
                   </div>
@@ -22,10 +22,10 @@
                   <button ngbDropdownToggle type="button" class="btn btn-transp"><i class="user-icon"></i>
                   </button>
                   <div ngbDropdownMenu class="dropdown-menu">
-                      <a ngbDropdownItem class="dropdown-item" href="#">Sign in</a>
-                      <a ngbDropdownItem lass="dropdown-item" href="#">Sign up</a>
+                      <a ngbDropdownItem class="dropdown-item" (click)="open()">Sign in</a>
+                      <a ngbDropdownItem lass="dropdown-item" (click)="openSignUp()">Sign up</a>
                   </div>
-                  <a href="#" class="ml-lg-3 basket"><i class="fa fa-shopping-cart"></i></a>
+                  <a href="/basket" class="ml-lg-3 basket"><i class="fa fa-shopping-cart"></i></a>
               </div>
           </div>
         </div>

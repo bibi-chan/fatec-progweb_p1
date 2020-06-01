@@ -1,4 +1,10 @@
+import { ProductsService } from './../shared/products.service';
 import { Component, OnInit } from '@angular/core';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { DecimalPipe } from '@angular/common';
+import { map, startWith } from 'rxjs/operators';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-vitrine',
@@ -6,21 +12,34 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./vitrine.component.scss']
 })
 export class VitrineComponent implements OnInit {
+categories;
+products;
+// filter = new FormControl('');
 
-  products = [
-    {name: 'seeds', category: 'food', img: '../../assets/images/seeds.jpeg'},
-    {name: 'basicfood', category: 'food', img: '../../assets/images/basicfood.jpeg'},
-    {name: 'gourmetfood', category: 'food', img: '../../assets/images/gourmetfood.jpeg'},
-    {name: 'vitamin', category: 'care', img: '../../assets/images/vitamin.jpeg'},
-    {name: 'plasticwheel', category: 'fitness', img: '../../assets/images/plasticwheel.jpeg'},
-    {name: 'metalwheel', category: 'fitness', img: '../../assets/images/metalwheel.jpeg'},
-
-
-  ];
-
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(private productsService: ProductsService, private modalService: NgbModal, pipe: DecimalPipe)
+  {
+    // this.products = this.filter.valueChanges.pipe(
+    //   startWith(''),
+    //   map(text => this.productsService.search(text, pipe))
+    // );
   }
 
+  ngOnInit(): void {
+    this.products = this.productsService.getProducts();
+    this.performFilter();
+  }
+
+  openDetail(product) {
+    const modalRef = this.modalService.open(ProductDetailComponent, {
+      size: 'lg',
+    });
+    modalRef.componentInstance.product = product;
+    console.log(product);
+  }
+
+  performFilter() {
+  this.productsService.performFilter(this.categories);
+
+  }
 }
+

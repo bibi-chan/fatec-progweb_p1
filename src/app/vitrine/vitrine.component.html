@@ -1,4 +1,4 @@
-<div class="welcome">
+<div class="welcome mt-5">
   <div class="col-12 text-center my-3">
     <img src="../../assets/images/welcome.jpeg" />
   </div>
@@ -7,25 +7,36 @@
 <section class="sales">
   <div class="container text-center py-5">
     <div id="filtersButtons" class="pb-3">
-      <button class="btn filt active" onclick="filterSelection('all')">
+      <button class="btn filt active">
         Show All
       </button>
-      <button class="btn filt" onclick="filterSelection('food')">Food</button>
-      <button class="btn filt" onclick="filterSelection('care')">Care</button>
-      <button class="btn filt" onclick="filterSelection('fitness')">
-        Fitness
-      </button>
+      <button class="btn filt">Food</button>
+      <button class="btn filt">Care</button>
+      <button class="btn filt">Fitness</button>
     </div>
 
+      <input type="text" class="form-control" placeholder="Search">
+
     <div class="row products" id="products">
-      <div class="product col-4" *ngFor="let image of products">
+      <div class="product col-4" *ngFor="let product of products; index as i">
         <div class="content mx-2 my-4">
-          <img src="{{ image.img }}" />
+          <img src="{{ product.img }}" />
+          <div class="overlay-details">
+            <h4 class="pb-4">{{ product.name }}</h4>
+            <button type="submit" class="btn btn-detail" (click)="openDetail(product)">
+              <p>+ Details</p>
+          </button>
+            <div class="row justify-content-center mt-5">
+              <p class="mx-3 mt-2">$ {{ product.price }}</p>
+              <button class="btn btn-blue" type="submit">
+                <i class="fa fa-cart-plus mx-3"></i>
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-
   </div>
 </section>
-
+<!-- <app-product-detail [products]="products"></app-product-detail> -->
 <app-newsletter></app-newsletter>

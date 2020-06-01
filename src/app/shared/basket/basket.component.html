@@ -1,0 +1,37 @@
+<div class="container">
+  <h2><strong>My Cart</strong></h2>
+  <div class="responsive">
+    <table class="table table-hover table-borderless my-4">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th></th>
+          <th class="large">Item</th>
+          <th class="large">Qty</th>
+          <th class="large">$ Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of products; index as i">
+          <th scope="row">{{ i + 1 }}</th>
+          <td>
+            <img src="{{ product.img }}" />
+          </td>
+          <td>{{ product.name }}</td>
+          <td class="large">
+            <i class="fa fa-minus-circle"></i> {{ product.qty
+            }} <i class="fa fa-plus-circle"></i>
+          </td>
+          <td>{{ product.price }} <i class="fa fa-times-circle"></i></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="row justify-content-between">
+      <h4 class="pb-5 ml-3"><strong>Total</strong></h4>
+      <h4 class="mr-5">$ 22,70</h4>
+    </div>
+    <button class="btn btn-blue btn-lg mb-5 mr-2" type="button">
+      CHECKOUT
+    </button>
+  </div>
+</div>

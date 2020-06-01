@@ -1,0 +1,44 @@
+<div class="modal-header">
+  <h4 class="modal-title"><strong>SIGN UP</strong></h4>
+  <button
+    type="button"
+    class="close"
+    aria-label="Close"
+    (click)="activeModal.dismiss('Cross click')"
+  >
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<form action="" [formGroup]="formCreatAccount">
+<div class="modal-body">
+  <p>Name</p>
+  <input type="text" class="form-control" placeholder="Name" formControlName="name">
+  <div class="invalid-feedback">Please fill out this field correctly.</div>
+  <p class="mt-3">E-mail</p>
+  <input type="email" class="form-control" placeholder="E-mail" formControlName="email"/>
+  <div class="invalid-feedback">Please fill out this field correctly.</div>
+  <p class="mt-3">Password</p>
+  <input type="password" class="form-control" placeholder="Password" formControlName="passwd"/>
+  <div class="invalid-feedback">Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters.</div>
+  <p class="mt-3">Confirm Password</p>
+  <input type="password" class="form-control" placeholder="Same Password" formControlName="repasswd"/>
+  <div class="invalid-feedback" >Password not matched.</div>
+<div class="form-check mt-3">
+  <input class="form-check-input" type="checkbox" value="" formControlName="check">
+  <label class="form-check-label" for="invalidCheck">
+  Agree to blabla bla
+  </label>
+</div>
+  <p class="mt-3">
+    <a (click)="openSignIn()">I already have an account :)</a>
+  </p>
+</div>
+<div class="modal-footer">
+  <button
+    type="submit"
+    class="btn btn-blue btn-lg" (click)="action()"
+  >
+    SEND
+  </button>
+</div>
+</form>

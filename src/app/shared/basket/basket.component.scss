@@ -1,0 +1,37 @@
+@media (min-width: 320px) {
+  img {
+    width: 75%;
+  }
+
+  .large {
+    width: 5em;
+  }
+
+  .btn-blue {
+    background: #60bcd3;
+    color: #fff;
+    float: right;
+  }
+
+  .btn-blue:hover {
+    background-color: #d7eef4;
+    color: #60bcd3;
+  }
+}
+@media (min-width: 768px) {
+  .responsive {
+    width: 75%;
+  }
+  th {
+    font-size: 1.6em;
+  }
+  td {
+    font-size: 1.2em;
+  }
+}
+@media (min-width: 1024px) {
+  img {
+      width: 30%;
+  }
+}
+
