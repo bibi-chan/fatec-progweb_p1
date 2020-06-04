@@ -6,26 +6,44 @@
 
 <section class="sales">
   <div class="container text-center py-5">
-    <div id="filtersButtons" class="pb-3">
-      <button class="btn filt active">
-        Show All
+    <div class="form-group row">
+        <select class="form-control" id="filtersButtons" [(ngModel)]="term">
+          <option value="All">All</option>
+          <option *ngFor="let entry of products | filterCategory" value="{{entry.categories}}">{{entry.categories}}
+          </option>
+        </select>
+      </div>
+    <div ngDefaultControl id="filtersButtons" [(ngModel)]="term" class="pb-3">
+      <button  type="button" class="btn filt active" (click)="term = ''">
+        SHOW ALL
       </button>
-      <button type="button" class="btn filt">Food</button>
-      <button type="button" class="btn filt">Care</button>
-      <button type="button" class="btn filt">Fitness</button>
+      <button
+        class="btn filt ml-3"
+        (click)="term = product.categories"
+        type="button"
+        *ngFor="let product of products | filterCategory"
+      >
+        {{ product.categories }}
+      </button>
     </div>
-
-      <!-- <input type="text" class="form-control" placeholder="Search" [(ngModel)]="term"> -->
+    <!-- <input type="text" class="form-control" placeholder="Search" [(ngModel)]="term"> -->
 
     <div class="row products" id="products">
-      <div class="product col-4" *ngFor="let product of products | filter:term; index as i">
+      <div
+        class="product col-md-4"
+        *ngFor="let product of products | filterProducts: term: 'categories'; index as i"
+      >
         <div class="content mx-2 my-4">
           <img src="{{ product.img }}" />
           <div class="overlay-details">
             <h4 class="pb-4">{{ product.name }}</h4>
-            <button type="submit" class="btn btn-detail" (click)="openDetail(product)">
+            <button
+              type="submit"
+              class="btn btn-detail"
+              (click)="openDetail(product)"
+            >
               <p>+ Details</p>
-          </button>
+            </button>
             <div class="row justify-content-center mt-5">
               <p class="mx-3 mt-2">$ {{ product.price }}</p>
               <button class="btn btn-blue" type="submit">

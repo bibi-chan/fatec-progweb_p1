@@ -13,7 +13,7 @@
         align-content: center;
         flex-wrap: wrap;
         img {
-          width: 30%;
+          width: 40%;
           flex: 1;
         }
       }
@@ -64,7 +64,6 @@
     bottom: 0;
     left: 0;
     right: 0;
-    height: 100%;
     width: 100%;
     opacity: 0;
     transition: 0.5s ease;

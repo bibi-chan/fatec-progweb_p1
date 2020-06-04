@@ -13,21 +13,35 @@ import { FormControl } from '@angular/forms';
 })
 export class VitrineComponent implements OnInit {
 products;
-term: string;
-fitness: 'fitness';
-// filter = new FormControl('');
+term = 'All';
+filter = new FormControl('');
 
-  constructor(private productsService: ProductsService, private modalService: NgbModal, pipe: DecimalPipe)
+  constructor(private productsService: ProductsService, private modalService: NgbModal, private pipe: DecimalPipe)
   {
-    // this.products = this.filter.valueChanges.pipe(
-    //   startWith(''),
-    //   map(text => this.productsService.search(text, pipe))
-    // );
+    this.products = this.filter.valueChanges.pipe(
+    startWith(''),
+    map(text => this.productsService.search(text, pipe))
+    );
   }
 
   ngOnInit(): void {
     this.products = this.productsService.getProducts();
   }
+
+  showAll(categories) {
+    this.products = this.productsService.getProducts();
+  }
+
+  // filterItensByCategory(categories) {
+    // this.filteredItens = this.products.filter((product) => {
+    //   return product.categories.includes(this.products.categories);
+    // });
+
+  //   this.products = this.filter.valueChanges.pipe(
+  //     startWith(''),
+  //     map(fitness => this.productsService.search(fitness, this.pipe))
+  //     );
+  // }
 
   openDetail(product) {
     const modalRef = this.modalService.open(ProductDetailComponent, {

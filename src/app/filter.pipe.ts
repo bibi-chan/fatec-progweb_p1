@@ -1,15 +1,15 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import * as _ from 'lodash';
 
 @Pipe({
-  name: 'filter2',
+  name: 'filterCategory',
+  pure: false
 })
 export class FilterPipe implements PipeTransform {
-  transform(items: any[], searchProduct: any): any[] {
-    if (!items) { return []; }
-    if (!searchProduct) { return items; }
-    searchProduct = searchProduct.toLocaleLowerCase();
-    return items.filter((it) => {
-      return it.toLocaleLowerCase().includes(searchProduct);
-    });
+  transform(value: any, args?: any): any {
+
+    const uniqueArray = _.uniqBy(value, 'categories');
+
+    return uniqueArray;
   }
 }

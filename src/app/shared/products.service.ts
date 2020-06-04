@@ -8,12 +8,12 @@ export class ProductsService {
   constructor() { }
 
   private products = [
-    {id: 1, name: 'Seeds', categories: 'food', img: '../../assets/images/seeds.jpeg', price: '6,90'},
-    {id: 2, name: 'Basic Food', categories: 'food', img: '../../assets/images/basicfood.jpeg', price: '8,90'},
-    {id: 3, name: 'Gourmet Food', categories: 'food', img: '../../assets/images/gourmetfood.jpeg', price: '12,90'},
-    {id: 4, name: 'Vitamin', categories: 'care', img: '../../assets/images/vitamin.jpeg', price: '10,90'},
-    {id: 5, name: 'Plastic Wheel', categories: 'fitness', img: '../../assets/images/plasticwheel.jpeg', price: '15,90'},
-    {id: 6, name: 'Metal Wheel', categories: 'fitness', img: '../../assets/images/metalwheel.jpeg', price: '15,90'},
+    {id: 1, name: 'Seeds', categories: 'FOOD', img: '../../assets/images/seeds.jpeg', price: '6,90'},
+    {id: 2, name: 'Basic Food', categories: 'FOOD', img: '../../assets/images/basicfood.jpeg', price: '8,90'},
+    {id: 3, name: 'Gourmet Food', categories: 'FOOD', img: '../../assets/images/gourmetfood.jpeg', price: '12,90'},
+    {id: 4, name: 'Vitamin', categories: 'CARE', img: '../../assets/images/vitamin.jpeg', price: '10,90'},
+    {id: 5, name: 'Plastic Wheel', categories: 'FITNESS', img: '../../assets/images/plasticwheel.jpeg', price: '15,90'},
+    {id: 6, name: 'Metal Wheel', categories: 'FITNESS', img: '../../assets/images/metalwheel.jpeg', price: '15,90'},
   ];
 
   getProducts(id = false) {

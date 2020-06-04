@@ -19,6 +19,7 @@ import { DecimalPipe } from '@angular/common';
 import { ProductDetailComponent } from './vitrine/product-detail/product-detail.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { SearchedProductsComponent } from './vitrine/searched-products/searched-products.component';
+import { FilterProductsPipe } from './filter-products.pipe';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { SearchedProductsComponent } from './vitrine/searched-products/searched-
     CreateAccountComponent,
     BasketComponent,
     ProductDetailComponent,
-    SearchedProductsComponent
+    SearchedProductsComponent,
+    FilterProductsPipe
   ],
   imports: [
     BrowserModule,
