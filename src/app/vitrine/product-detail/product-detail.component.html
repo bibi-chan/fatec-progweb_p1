@@ -18,7 +18,7 @@
   </div>
   <div class="modal-footer justify-content-between mt-5">
     <h4>$ {{ product.price }}</h4>
-    <button type="submit" class="btn btn-blue btn-lg">
+    <button type="submit" class="btn btn-blue btn-lg" (click)="addItem($event)">
       <i class="fa fa-cart-plus"></i>
     </button>
   </div>

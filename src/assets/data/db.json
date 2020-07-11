@@ -1,0 +1,56 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Seeds",
+      "categories": "FOOD",
+      "img": "assets/images/seeds.jpeg",
+      "price": 6
+    },
+    {
+      "id": 2,
+      "name": "Basic Food",
+      "categories": "FOOD",
+      "img": "assets/images/basicfood.jpeg",
+      "price": 8
+    },
+    {
+      "id": 3,
+      "name": "Gourmet Food",
+      "categories": "FOOD",
+      "img": "assets/images/gourmetfood.jpeg",
+      "price": 12
+    },
+    {
+      "id": 4,
+      "name": "Vitamin",
+      "categories": "CARE",
+      "img": "assets/images/vitamin.jpeg",
+      "price": 10
+    },
+    {
+      "id": 5,
+      "name": "Plastic Wheel",
+      "categories": "FITNESS",
+      "img": "assets/images/plasticwheel.jpeg",
+      "price": 15
+    },
+    {
+      "id": 6,
+      "name": "Metal Wheel",
+      "categories": "FITNESS",
+      "img": "assets/images/metalwheel.jpeg",
+      "price": 15
+    }
+  ],
+  "cart": [
+    {
+      "id": 6,
+      "name": "Metal Wheel",
+      "categories": "FITNESS",
+      "img": "../images/metalwheel.jpeg",
+      "price": 15,
+      "quantity": 1
+    }
+  ]
+}

@@ -5,6 +5,9 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { DecimalPipe } from '@angular/common';
 import { map, startWith } from 'rxjs/operators';
 import { FormControl } from '@angular/forms';
+import { Products } from '../models/products.model';
+import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-vitrine',
@@ -12,25 +15,36 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./vitrine.component.scss']
 })
 export class VitrineComponent implements OnInit {
-products;
+  product = {} as Products;
+  products: Products[] = [];
+  item: Observable<Products[]>;
 term = 'All';
 filter = new FormControl('');
 
-  constructor(private productsService: ProductsService, private modalService: NgbModal, private pipe: DecimalPipe)
+  constructor(private productsService: ProductsService, private route: ActivatedRoute,
+              private modalService: NgbModal, private pipe: DecimalPipe)
   {
-    this.products = this.filter.valueChanges.pipe(
-    startWith(''),
-    map(text => this.productsService.search(text, pipe))
-    );
+    // this.products = this.filter.valueChanges.pipe(
+    // startWith(''),
+    // map(text => this.productsService.search(text, pipe))
+    // );
   }
 
   ngOnInit(): void {
-    this.products = this.productsService.getProducts();
+    this.getProducts();
+    this.item = this.productsService.getProductById(this.route.snapshot.params.id);
   }
 
-  showAll(categories) {
-    this.products = this.productsService.getProducts();
+  getProducts() {
+    this.productsService.getProducts().subscribe((products: Products[]) => {
+      this.products = products;
+    });
   }
+
+
+  // showAll(categories) {
+  //   this.products = this.productsService.getProducts();
+  // }
 
   // filterItensByCategory(categories) {
     // this.filteredItens = this.products.filter((product) => {
@@ -48,7 +62,11 @@ filter = new FormControl('');
       size: 'lg',
     });
     modalRef.componentInstance.product = product;
-    console.log(product);
+  }
+
+  addItem(item) {
+    console.log(item);
+    this.productsService.add(item);
   }
 }
 

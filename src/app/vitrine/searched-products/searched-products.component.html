@@ -1,18 +1,32 @@
-<div class="container text-center">
-<input type="text" class="form-control" placeholder="Search" [(ngModel)]="term">
-<h4 class="pt-5">Searched for: {{ term }}</h4>
+<div class="container">
+<input type="text" class="form-control col-6 col-xs-12" placeholder="Search" [(ngModel)]="term">
+
+<div ngDefaultControl id="filtersButtons" [(ngModel)]="term" class="py-5">
+  <button  type="button" class="btn filt active" (click)="term = ''">
+    SHOW ALL
+  </button>
+  <button
+    class="btn filt ml-3"
+    (click)="term = product.categories"
+    type="button"
+    *ngFor="let product of products | filterCategory"
+  >
+    {{ product.categories }}
+  </button>
+</div>
+
 <div class="row products" id="products">
   <div class="product col-4" *ngFor="let product of products | filter:term; index as i">
-    <div class="content mx-2 my-4">
+    <div class="content mx-2 my-4"  >
       <img src="{{ product.img }}" />
       <div class="overlay-details">
         <h4 class="pb-4">{{ product.name }}</h4>
-        <button type="submit" class="btn btn-detail">
+        <button type="submit" class="btn btn-detail" (click)="openDetail(product)">
           <p>+ Details</p>
       </button>
         <div class="row justify-content-center mt-5">
           <p class="mx-3 mt-2">$ {{ product.price }}</p>
-          <button class="btn btn-blue" type="submit">
+          <button class="btn btn-blue" type="submit" (click)="addItem($event)">
             <i class="fa fa-cart-plus mx-3"></i>
           </button>
         </div>
@@ -21,3 +35,51 @@
   </div>
 </div>
 </div>
+
+<!--
+<div class="container text-center">
+
+
+<input type="text" class="form-control mb-4 col-9" placeholder="Search" [(ngModel)]="term">
+
+  <div ngDefaultControl id="filtersButtons" [(ngModel)]="term" class="pb-3">
+    <button  type="button" class="btn filt active" (click)="term = ''">
+      SHOW ALL
+    </button>
+    <button
+      class="btn filt ml-3"
+      (click)="term = product.categories"
+      type="button"
+      *ngFor="let product of products | filterCategory"
+    >
+      {{ product.categories }}
+    </button>
+  </div>
+
+  <div class="row products" id="products">
+    <div
+      class="product col-md-4"
+      *ngFor="let product of products | filterProducts: term: 'categories'; index as i"
+    >
+      <div class="content mx-2 my-4">
+        <img src="{{ product.img }}" />
+        <div class="overlay-details">
+          <h4 class="pb-4">{{ product.name }}</h4>
+          <button
+            type="submit"
+            class="btn btn-detail"
+            (click)="openDetail(product)"
+          >
+            <p>+ Details</p>
+          </button>
+          <div class="row justify-content-center mt-5">
+            <p class="mx-3 mt-2">$ {{ product.price }}</p>
+            <button class="btn btn-blue" type="submit" (click)="addItem($event)">
+              <i class="fa fa-cart-plus mx-3"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->

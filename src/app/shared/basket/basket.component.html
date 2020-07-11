@@ -1,7 +1,48 @@
-<div class="container">
+<div class="container mt-5">
+  <div class="row">
+
+
+    <h3> <i class="fa fa-shopping-cart mr-3"></i><strong>CART</strong></h3>
+  </div>
+  <div class="row">
+
+    <div *ngIf="!items().length">
+      <p>
+        Empty!
+      </p>
+    </div>
+    <div class="table-responsive" *ngIf="items().length">
+        <table class="table">
+          <tbody>
+          <tr *ngFor="let item of items()">
+            <th>({{item.quantity}}x) {{item.product.name}}</th>
+            <td class="text-right">{{item.value()}}</td>
+            <td class="text-right">
+              <a (click)="remove(item)" class="btn btn-sm danger"><i class="fa fa-remove"></i></a>
+            </td>
+          </tr>
+          <tr>
+            <th>Total:</th>
+            <td class="text-right">{{total()}}</td>
+          </tr>
+        </tbody></table>
+      </div>
+  </div>
+  <div class="box-footer" *ngIf="items().length">
+    <div class="pull-right">
+      <button (click)="clear()" type="button" class="btn btn-danger"><i class="fa fa-trash"></i> CLEAR</button>
+      <a class="btn btn-blue ml-3"> CHECKOUT</a>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="container">
   <h2><strong>My Cart</strong></h2>
+  <div *ngIf="!items()" >
+    <p>Your shopping cart is empty!</p>
+  </div>
   <div class="responsive">
-    <table class="table table-hover table-borderless my-4">
+    <table class="table table-hover table-borderless my-4" >
       <thead>
         <tr>
           <th>#</th>
@@ -12,26 +53,22 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let product of products; index as i">
-          <th scope="row">{{ i + 1 }}</th>
-          <td>
-            <img src="{{ product.img }}" />
-          </td>
-          <td>{{ product.name }}</td>
+        <tr *ngFor="let item of items()">
+          <td>{{ item.product.name }}</td>
           <td class="large">
-            <i class="fa fa-minus-circle"></i> {{ product.qty
-            }} <i class="fa fa-plus-circle"></i>
+            <button type="button" (click)="remove(item)"><i class="fa fa-minus-circle"></i> </button>{{ item.quantity
+            }} <button type="button" (click)="add(item)"><i class="fa fa-plus-circle"></i></button>
           </td>
-          <td>{{ product.price }} <i class="fa fa-times-circle"></i></td>
+          <td>$ {{ item.value() }} <button type="button" (click)="clear()"><i class="fa fa-times-circle"></i></button> </td>
         </tr>
       </tbody>
     </table>
     <div class="row justify-content-between">
       <h4 class="pb-5 ml-3"><strong>Total</strong></h4>
-      <h4 class="mr-5">$ 22,70</h4>
+      <h4 class="mr-5"> $</h4>
     </div>
     <button class="btn btn-blue btn-lg mb-5 mr-2" type="button">
       CHECKOUT
     </button>
   </div>
-</div>
+</div> -->

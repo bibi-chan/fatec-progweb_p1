@@ -7,7 +7,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class FilterProductsPipe implements PipeTransform {
 
 
-  transform(value: string[], filterString: string, propName: string): any {
+  transform(value: any[], filterString: any, propName: any): any {
     if (value.length === 0 || filterString === '' || filterString === undefined || filterString === 'All') {
       return value;
     }

@@ -20,6 +20,7 @@ import { ProductDetailComponent } from './vitrine/product-detail/product-detail.
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { SearchedProductsComponent } from './vitrine/searched-products/searched-products.component';
 import { FilterProductsPipe } from './filter-products.pipe';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { FilterProductsPipe } from './filter-products.pipe';
     NgBootstrapFormValidationModule,
     FormsModule,
     ReactiveFormsModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    HttpClientModule
   ],
   providers: [FormBuilder, DecimalPipe, NgbActiveModal],
   bootstrap: [AppComponent]

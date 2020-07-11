@@ -10,11 +10,16 @@ import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 export class ProductDetailComponent implements OnInit {
 @Input() product;
   constructor(
-    public activeModal: NgbActiveModal
+    public activeModal: NgbActiveModal, private productsService: ProductsService
   ) {}
 
   ngOnInit(): void {
     console.log(this.product);
+  }
+
+  addItem(item) {
+    console.log(item);
+    this.productsService.add(item);
   }
 
 }
