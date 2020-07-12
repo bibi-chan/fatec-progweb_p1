@@ -14,7 +14,7 @@ import {
 export class LoginService {
   constructor(private httpClient: HttpClient) {}
 
-  url = 'http://localhost:3000/login'; // api rest fake
+  url = 'http://localhost:3000/users'; // api rest fake
   // Headers
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),

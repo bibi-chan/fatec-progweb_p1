@@ -50,10 +50,10 @@
     }
   ],
   "cart": [],
-  "login": [
+  "users": [
     {
-      "name": "Beatriz Sandre",
-      "email": "btrz.sndr@gmail.com",
+      "name": "Teste Um",
+      "email": "teste@um.com",
       "passwd": "!QAZ2sx3edc",
       "repasswd": "!QAZ2sx3edc",
       "check": true,
