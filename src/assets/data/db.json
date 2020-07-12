@@ -5,52 +5,59 @@
       "name": "Seeds",
       "categories": "FOOD",
       "img": "assets/images/seeds.jpeg",
-      "price": 6
+      "price": 6,
+      "quantity": 1
     },
     {
       "id": 2,
       "name": "Basic Food",
       "categories": "FOOD",
       "img": "assets/images/basicfood.jpeg",
-      "price": 8
+      "price": 8,
+      "quantity": 1
     },
     {
       "id": 3,
       "name": "Gourmet Food",
       "categories": "FOOD",
       "img": "assets/images/gourmetfood.jpeg",
-      "price": 12
+      "price": 12,
+      "quantity": 1
     },
     {
       "id": 4,
       "name": "Vitamin",
       "categories": "CARE",
       "img": "assets/images/vitamin.jpeg",
-      "price": 10
+      "price": 10,
+      "quantity": 1
     },
     {
       "id": 5,
       "name": "Plastic Wheel",
       "categories": "FITNESS",
       "img": "assets/images/plasticwheel.jpeg",
-      "price": 15
+      "price": 15,
+      "quantity": 1
     },
     {
       "id": 6,
       "name": "Metal Wheel",
       "categories": "FITNESS",
       "img": "assets/images/metalwheel.jpeg",
-      "price": 15
-    }
-  ],
-  "cart": [
-    {
-      "id": 6,
-      "name": "Metal Wheel",
-      "categories": "FITNESS",
-      "img": "../images/metalwheel.jpeg",
       "price": 15,
       "quantity": 1
+    }
+  ],
+  "cart": [],
+  "login": [
+    {
+      "name": "Beatriz Sandre",
+      "email": "btrz.sndr@gmail.com",
+      "passwd": "!QAZ2sx3edc",
+      "repasswd": "!QAZ2sx3edc",
+      "check": true,
+      "id": 1
     }
   ]
 }

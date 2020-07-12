@@ -1,3 +1,4 @@
+import { CartItem } from './../../shared/basket/cart-item.model';
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from 'src/app/shared/products.service';
 import { Products } from 'src/app/models/products.model';
@@ -12,6 +13,7 @@ import { ProductDetailComponent } from '../product-detail/product-detail.compone
 export class SearchedProductsComponent implements OnInit {
   term: string;
   product = {} as Products;
+  item = {} as CartItem;
   products: Products[] = [];
   showVar = false;
 
@@ -30,7 +32,7 @@ export class SearchedProductsComponent implements OnInit {
 
   addItem(item) {
     console.log(item);
-    this.productsService.add(item);
+    this.productsService.add(item).subscribe();
   }
 
   openDetail(product) {
@@ -40,5 +42,4 @@ export class SearchedProductsComponent implements OnInit {
     modalRef.componentInstance.product = product;
     console.log(product);
   }
-
 }

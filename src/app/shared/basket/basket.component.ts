@@ -27,7 +27,6 @@ export class BasketComponent implements OnInit {
   constructor(private productService: ProductsService) {}
 
   ngOnInit() {
-this.items();
   }
 
   items(): any[] {

@@ -1,8 +1,10 @@
+import { LoginService } from './../login-modal/login.service';
 import { Component, OnInit } from '@angular/core';
 import { LoginModalComponent } from '../login-modal/login-modal.component';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Validators, FormGroup, FormBuilder, ValidationErrors, AbstractControl } from '@angular/forms';
 import { ValidatorsService } from 'src/app/validators.service';
+import { Login } from '../login-modal/login';
 
 @Component({
   selector: 'app-create-account',
@@ -14,11 +16,13 @@ export class CreateAccountComponent implements OnInit {
     public activeModal: NgbActiveModal,
     private formBuilder: FormBuilder,
     private validatorService: ValidatorsService,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private loginService: LoginService
   ) {}
 
   formCreatAccount: FormGroup;
   passwd;
+  login = {} as Login;
 
   ngOnInit(): void {
     this.createForm();
@@ -84,9 +88,12 @@ validadePass() {
   }
 
   action() {
+    const body = this.formCreatAccount.value;
     if (!this.formCreatAccount.valid) {
       // this.activeModal.close('Close click');
       this.validatorService.validateForm(this.formCreatAccount);
     }
+    this.login = body;
+    this.loginService.addUser(body).subscribe();
   }
 }
