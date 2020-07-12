@@ -8,10 +8,9 @@ import { ValueConverter } from '@angular/compiler/src/render3/view/template';
 @Component({
   selector: 'app-basket',
   templateUrl: './basket.component.html',
-  styleUrls: ['./basket.component.scss']
+  styleUrls: ['./basket.component.scss'],
 })
 export class BasketComponent implements OnInit {
-
   // constructor() { }
   // products = [
   //   {name: 'Seeds', categories: '1', img: '../../assets/images/seeds.jpeg', price: '13,80', qty: 2},
@@ -22,32 +21,31 @@ export class BasketComponent implements OnInit {
   // }
 
   product = {} as Products;
-  // products: Products[];
+  products: CartItem[] = [];
 
   constructor(private productService: ProductsService) {}
 
   ngOnInit() {
+    this.getCart();
   }
 
   items(): any[] {
     return this.productService.items;
   }
 
- clear() {
-this.productService.clear();
- }
-
- add(item: Products) {
-   this.productService.add(item);
- }
-
- remove(item: CartItem) {
-  this.productService.remove(item);
- }
-
- total(): number {
-  return this.productService.total();
- }
+  getCart() {
+    this.productService.getCart().subscribe((products: CartItem[]) => {
+      this.products = products;
+    });
+  }
 
 
+  remove(item: CartItem) {
+    this.productService.deleteProducts(item).subscribe();
+  }
+
+  total(): number {
+    this.products = this.items();
+    return this.productService.total();
+  }
 }

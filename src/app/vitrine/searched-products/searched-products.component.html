@@ -21,12 +21,12 @@
       <img src="{{ product.img }}" />
       <div class="overlay-details">
         <h4 >{{ product.name }}</h4>
-        <button type="submit" class="btn btn-detail" (click)="openDetail(product)">
+        <button type="button" class="btn btn-detail" (click)="openDetail(product)">
           <p>+ Details</p>
       </button>
         <div class="row justify-content-center">
           <p class="mx-3">$ {{ product.price }}</p>
-          <button class="btn btn-blue" type="submit" (click)="addItem(product)">
+          <button class="btn btn-blue" type="button" (click)="addItem(product)">
             <i class="fa fa-cart-plus mx-3"></i>
           </button>
         </div>

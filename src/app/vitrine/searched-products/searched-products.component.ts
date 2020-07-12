@@ -1,3 +1,4 @@
+import { ActivatedRoute, Router } from '@angular/router';
 import { CartItem } from './../../shared/basket/cart-item.model';
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from 'src/app/shared/products.service';
@@ -17,12 +18,12 @@ export class SearchedProductsComponent implements OnInit {
   products: Products[] = [];
   showVar = false;
 
-  constructor(private productsService: ProductsService, private modalService: NgbModal) { }
+  constructor(private productsService: ProductsService, private modalService: NgbModal, private router: Router) { }
 
   ngOnInit(): void {
     this.getProducts();
-
   }
+
 
   getProducts() {
     this.productsService.getProducts().subscribe((products: Products[]) => {

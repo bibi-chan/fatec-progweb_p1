@@ -36,80 +36,42 @@ export class ProductsService {
     return this.httpClient.get<CartItem[]>(`${this.api}/cart`);
   }
 
-  add(item: Products) {
+  add(item: Products): Observable<CartItem> {
     const foundItem = this.items.find((p) => p.product.id === item.id);
     if (foundItem) {
-      foundItem.quantity = foundItem.quantity + 1;
+      // foundItem.quantity = foundItem.quantity + 1;
+      this.increaseQty(foundItem);
       return this.httpClient
-      .put<CartItem>(
-        this.cart + '/' + item.id,
-        JSON.stringify(item),
-        this.httpOptions
-      )
-      .pipe(retry(1), catchError(this.handleError));
-    } else {
-      this.items.push(new CartItem(item));
-      return this.httpClient.post<CartItem>(this.cart, JSON.stringify(item), this.httpOptions)
-    .pipe(retry(2), catchError(this.handleError));
-    }
-
-  }
-
- // salva um item
- save(item: Products): Observable<CartItem> {
-  const foundItem = this.items.find((p) => p.product.id === item.id);
-  if (foundItem) {
-    foundItem.quantity = foundItem.quantity + 1;
-  } else {
-    return this.httpClient.post<CartItem>(this.cart, JSON.stringify(item), this.httpOptions)
-  .pipe(retry(2), catchError(this.handleError));
-  }
-}
-
-update(item: CartItem) {
-  const foundItem = this.items.find((p) => p.product.id === item.id);
-  if (foundItem) {
-    foundItem.quantity = foundItem.quantity + 1;
-    return this.httpClient
-      .put<CartItem>(
-        this.cart + '/' + foundItem.id,
-        JSON.stringify(foundItem.quantity + 1),
-        this.httpOptions
-      )
-      .pipe(retry(1), catchError(this.handleError));
-  } else {
-    return this.httpClient.put<CartItem>(this.cart, JSON.stringify(item), this.httpOptions)
-  .pipe(retry(2), catchError(this.handleError));
-  }
-}
-
-
-  // atualiza um produto
-  updateC(products: CartItem): Observable<CartItem> {
-    return this.httpClient
-      .put<CartItem>(
-        this.cart + '/' + products.id,
-        JSON.stringify(products),
-        this.httpOptions
-      )
-      .pipe(retry(1), catchError(this.handleError));
-  }
-
-
-  clear() {
-    this.items = [];
-  }
-
-  remove(item: CartItem) {
-    this.items.splice(this.items.indexOf(item), 1);
-  }
-
-    // deleta um produto
-    deleteProducts(products: CartItem) {
-      return this.httpClient
-        .delete<CartItem>(this.cart + '/' + products.id, this.httpOptions)
+        .put<CartItem>(
+          this.cart + '/' + foundItem.id,
+          JSON.stringify((foundItem.quantity = foundItem.quantity + 1)),
+          this.httpOptions
+        )
         .pipe(retry(1), catchError(this.handleError));
+
+    } else {
+      // this.items.push(new CartItem(item));
+      return this.httpClient
+        .post<CartItem>(this.cart, JSON.stringify(item), this.httpOptions)
+        .pipe(retry(2), catchError(this.handleError));
     }
+  }
+
+  increaseQty(item: CartItem){
+    item.quantity = item.quantity + 1;
+  }
+  update(id, post): Observable<CartItem> {
+    return this.httpClient
+      .put<CartItem>(this.cart + id, JSON.stringify(post), this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
+  }
+
+  // deleta um produto
+  deleteProducts(products: CartItem) {
+    return this.httpClient
+      .delete<CartItem>(this.cart + '/' + products.id, this.httpOptions)
+      .pipe(retry(1), catchError(this.handleError));
+  }
 
   total(): number {
     return this.items
@@ -137,6 +99,30 @@ update(item: CartItem) {
       .pipe(retry(2), catchError(this.handleError));
   }
 
+  clear() {
+    return (this.items = []);
+  }
+
+  // update(item: CartItem) {
+  //   const foundItem = this.items.find((p) => p.product.id === item.id);
+  //   if (foundItem) {
+  //     foundItem.quantity = foundItem.quantity + 1;
+  //     return this.httpClient
+  //       .put<CartItem>(
+  //         this.cart + '/' + foundItem.id,
+  //         JSON.stringify(foundItem.quantity + 1),
+  //         this.httpOptions
+  //       )
+  //       .pipe(retry(1), catchError(this.handleError));
+  //   } else {
+  //     return this.httpClient.put<CartItem>(this.cart, JSON.stringify(item), this.httpOptions)
+  //   .pipe(retry(2), catchError(this.handleError));
+  //   }
+  // }
+
+  // remove(item: CartItem) {
+  //   this.items.splice(this.items.indexOf(item), 1);
+  // }
 
   // Manipulação de erros
   handleError(error: HttpErrorResponse) {
