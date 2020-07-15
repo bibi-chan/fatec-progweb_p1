@@ -9,7 +9,7 @@ import { ProductDetailComponent } from '../product-detail/product-detail.compone
 @Component({
   selector: 'app-searched-products',
   templateUrl: './searched-products.component.html',
-  styleUrls: ['./searched-products.component.scss']
+  styleUrls: ['./searched-products.component.scss'],
 })
 export class SearchedProductsComponent implements OnInit {
   term: string;
@@ -17,13 +17,18 @@ export class SearchedProductsComponent implements OnInit {
   item = {} as CartItem;
   products: Products[] = [];
   showVar = false;
+  cartItem: CartItem[] = [];
 
-  constructor(private productsService: ProductsService, private modalService: NgbModal, private router: Router) { }
+  constructor(
+    private productsService: ProductsService,
+    private modalService: NgbModal,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.getProducts();
+    this.getCart();
   }
-
 
   getProducts() {
     this.productsService.getProducts().subscribe((products: Products[]) => {
@@ -31,9 +36,20 @@ export class SearchedProductsComponent implements OnInit {
     });
   }
 
+  getCart() {
+    this.productsService.getCart().subscribe((products: CartItem[]) => {
+      this.cartItem = products;
+    });
+  }
+
   addItem(item) {
-    console.log(item);
-    this.productsService.add(item).subscribe();
+    const foundItem = this.cartItem.filter((p) => p.id === item.id);
+    if (foundItem[0]) {
+      foundItem[0].quantity = foundItem[0].quantity + 1;
+      this.productsService.update(foundItem[0]).subscribe();
+    } else {
+      this.productsService.add(item).subscribe();
+    }
   }
 
   openDetail(product) {

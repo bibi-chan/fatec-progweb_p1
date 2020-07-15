@@ -1,3 +1,5 @@
+import { LoginService } from './../shared/login-modal/login.service';
+import { Login } from './../shared/login-modal/login';
 import { ProductsService } from './../shared/products.service';
 import { Component, OnInit } from '@angular/core';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
@@ -17,12 +19,14 @@ import { Observable } from 'rxjs';
 export class VitrineComponent implements OnInit {
   product = {} as Products;
   products: Products[] = [];
+  login: Login[] = [];
   item: Observable<Products[]>;
 term = 'All';
 filter = new FormControl('');
 
   constructor(private productsService: ProductsService, private route: ActivatedRoute,
-              private modalService: NgbModal, private pipe: DecimalPipe)
+              private modalService: NgbModal, private pipe: DecimalPipe,
+              private loginService: LoginService)
   {
     // this.products = this.filter.valueChanges.pipe(
     // startWith(''),
@@ -38,6 +42,12 @@ filter = new FormControl('');
   getProducts() {
     this.productsService.getProducts().subscribe((products: Products[]) => {
       this.products = products;
+    });
+  }
+
+  getLogin() {
+    this.loginService.getLogin().subscribe((login: Login[]) => {
+      this.login = login;
     });
   }
 

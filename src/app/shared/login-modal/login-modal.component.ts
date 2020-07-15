@@ -1,8 +1,10 @@
+import { LoginService } from './login.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ValidatorsService } from 'src/app/validators.service';
+import { Login } from './login';
 
 @Component({
   selector: 'app-login-modal',
@@ -14,13 +16,21 @@ export class LoginModalComponent implements OnInit {
     public activeModal: NgbActiveModal,
     private formBuilder: FormBuilder,
     private validatorService: ValidatorsService,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private loginService: LoginService
   ) {}
 
   formLogin: FormGroup;
+  user: Login[] = [];
 
   ngOnInit(): void {
     this.createForm();
+    this.getUser();
+  }
+  getUser() {
+    this.loginService.getUser().subscribe((user: Login[]) => {
+      this.user = user;
+    });
   }
 
   createForm() {
@@ -32,7 +42,7 @@ export class LoginModalComponent implements OnInit {
           Validators.pattern(this.validatorService.getEmail()),
         ],
       ],
-      passwd: [null, [Validators.required, Validators.pattern(this.validatorService.getPasswd())]]
+      password: [null, [Validators.required, Validators.pattern(this.validatorService.getPasswd())]]
     });
   }
 
@@ -42,10 +52,14 @@ export class LoginModalComponent implements OnInit {
     });
   }
 
-  action() {
+  action(user) {
     if (!this.formLogin.valid) {
       // this.activeModal.close('Close click');
       this.validatorService.validateForm(this.formLogin);
     }
+    const found = this.user.filter((u) => u.id === user.id);
+    if (found[0]) {
+      this.loginService.addLogin(user).subscribe();
   }
+}
 }

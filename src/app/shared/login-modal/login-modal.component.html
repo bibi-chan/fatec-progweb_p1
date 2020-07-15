@@ -16,7 +16,7 @@
   <input type="email" class="form-control" placeholder="E-mail" formControlName="email"/>
   <div class="invalid-feedback">Please fill out this field correctly.</div>
   <p class="mt-4">Password:</p>
-<input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd" formControlName="passwd">
+<input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd" formControlName="password">
 <div class="invalid-feedback">Please fill out this field correctly.</div>
   <p class="mt-2">
     <a (click)="openForgotPassword()">I Forgot My Password :(</a>
@@ -26,7 +26,7 @@
   <button
     type="submit"
     class="btn btn-blue btn-lg"
-    (click)="action()"
+    (click)="action(formLogin)"
   >
     LOGIN
   </button>

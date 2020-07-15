@@ -44,21 +44,21 @@ export class CreateAccountComponent implements OnInit {
           Validators.pattern(this.validatorService.getEmail()),
         ],
       ],
-      passwd: [
+      password: [
         null,
         [
           Validators.required,
           Validators.pattern(this.validatorService.getPasswd()),
         ],
       ],
-      repasswd: [null, [Validators.required, this.matchValues('passwd')]],
+      repasswd: [null, [Validators.required, this.matchValues('password')]],
       check: [null, [Validators.required]],
     }, {Validator: this.validadePass}
       // }, {validator: this.checkPasswords }
     );
   }
   matchValues(
-    matchTo: 'passwd' // name of the control to match to
+    matchTo: 'password' // name of the control to match to
   ): (AbstractControl) => ValidationErrors | null {
     return (control: AbstractControl): ValidationErrors | null => {
       return !!control.parent &&

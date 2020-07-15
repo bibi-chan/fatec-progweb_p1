@@ -39,13 +39,26 @@ export class BasketComponent implements OnInit {
     });
   }
 
+  value(item) {
+    return this.productService.value(item);
+  }
 
   remove(item: CartItem) {
     this.productService.deleteProducts(item).subscribe();
   }
 
+  // total(): number {
+  //   this.products = this.items();
+  //   return this.productService.total();
+  // }
+
+   // total(): number {
+  //   return this.items
+  //     .map((item) => item.value())
+  //     .reduce((prev, value) => prev + value);
+  // }
+
   total(): number {
-    this.products = this.items();
-    return this.productService.total();
+    return this.products.map((item) => this.value(item)).reduce((prev, value) => prev + value);
   }
 }

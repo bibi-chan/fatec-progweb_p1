@@ -5,9 +5,10 @@ export class CartItem {
   categories: string;
   img: string;
   price: number;
-  constructor(public product: Products, public quantity: number = 1) {}
+  quantity: number;
+  constructor() {}
 
-  value(): number {
-    return this.product.price * this.quantity;
-  }
+  // value(): number {
+  //   return this.quantity * this.price;
+  // }
 }

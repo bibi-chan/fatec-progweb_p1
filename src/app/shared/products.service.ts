@@ -37,33 +37,41 @@ export class ProductsService {
   }
 
   add(item: Products): Observable<CartItem> {
-    const foundItem = this.items.find((p) => p.product.id === item.id);
-    if (foundItem) {
-      // foundItem.quantity = foundItem.quantity + 1;
-      this.increaseQty(foundItem);
-      return this.httpClient
-        .put<CartItem>(
-          this.cart + '/' + foundItem.id,
-          JSON.stringify((foundItem.quantity = foundItem.quantity + 1)),
-          this.httpOptions
-        )
-        .pipe(retry(1), catchError(this.handleError));
 
-    } else {
       // this.items.push(new CartItem(item));
       return this.httpClient
         .post<CartItem>(this.cart, JSON.stringify(item), this.httpOptions)
-        .pipe(retry(2), catchError(this.handleError));
-    }
+        .pipe(
+          map(obj => obj),
+         catchError(this.handleError));
   }
 
   increaseQty(item: CartItem){
     item.quantity = item.quantity + 1;
   }
-  update(id, post): Observable<CartItem> {
-    return this.httpClient
-      .put<CartItem>(this.cart + id, JSON.stringify(post), this.httpOptions)
-      .pipe(retry(2), catchError(this.handleError));
+
+  value(item: CartItem) {
+     const value = item.quantity * item.price;
+     return value;
+  }
+
+  update(product: CartItem): Observable<CartItem> {
+    const url = `${this.cart}/${product.id}`;
+    return this.httpClient.put<CartItem>(url, product).pipe(
+      map(obj => obj),
+     catchError(this.handleError));
+  }
+
+  updateI(item: CartItem): Observable<CartItem> {
+
+      return this.httpClient
+        .put<CartItem>(
+          this.cart + '/' + item.id,
+          JSON.stringify(item),
+          this.httpOptions
+        )
+        .pipe(retry(1), catchError(this.handleError));
+
   }
 
   // deleta um produto
@@ -73,11 +81,11 @@ export class ProductsService {
       .pipe(retry(1), catchError(this.handleError));
   }
 
-  total(): number {
-    return this.items
-      .map((item) => item.value())
-      .reduce((prev, value) => prev + value);
-  }
+  // total(): number {
+  //   return this.items
+  //     .map((item) => item.value())
+  //     .reduce((prev, value) => prev + value);
+  // }
 
   // Obtem todos os produtos
   getProducts(): Observable<Products[]> {
@@ -107,16 +115,8 @@ export class ProductsService {
   //   const foundItem = this.items.find((p) => p.product.id === item.id);
   //   if (foundItem) {
   //     foundItem.quantity = foundItem.quantity + 1;
-  //     return this.httpClient
-  //       .put<CartItem>(
-  //         this.cart + '/' + foundItem.id,
-  //         JSON.stringify(foundItem.quantity + 1),
-  //         this.httpOptions
-  //       )
-  //       .pipe(retry(1), catchError(this.handleError));
   //   } else {
-  //     return this.httpClient.put<CartItem>(this.cart, JSON.stringify(item), this.httpOptions)
-  //   .pipe(retry(2), catchError(this.handleError));
+  //    shau.push()
   //   }
   // }
 

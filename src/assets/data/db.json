@@ -1,7 +1,7 @@
 {
   "products": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Seeds",
       "categories": "FOOD",
       "img": "assets/images/seeds.jpeg",
@@ -9,7 +9,7 @@
       "quantity": 1
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Basic Food",
       "categories": "FOOD",
       "img": "assets/images/basicfood.jpeg",
@@ -17,7 +17,7 @@
       "quantity": 1
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Gourmet Food",
       "categories": "FOOD",
       "img": "assets/images/gourmetfood.jpeg",
@@ -25,7 +25,7 @@
       "quantity": 1
     },
     {
-      "id": 4,
+      "id": "4",
       "name": "Vitamin",
       "categories": "CARE",
       "img": "assets/images/vitamin.jpeg",
@@ -33,7 +33,7 @@
       "quantity": 1
     },
     {
-      "id": 5,
+      "id": "5",
       "name": "Plastic Wheel",
       "categories": "FITNESS",
       "img": "assets/images/plasticwheel.jpeg",
@@ -41,7 +41,7 @@
       "quantity": 1
     },
     {
-      "id": 6,
+      "id": "6",
       "name": "Metal Wheel",
       "categories": "FITNESS",
       "img": "assets/images/metalwheel.jpeg",
@@ -51,15 +51,15 @@
   ],
   "cart": [
     {
-      "id": 3,
+      "id": "3",
       "name": "Gourmet Food",
       "categories": "FOOD",
       "img": "assets/images/gourmetfood.jpeg",
       "price": 12,
-      "quantity": 1
+      "quantity": 2
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Basic Food",
       "categories": "FOOD",
       "img": "assets/images/basicfood.jpeg",
@@ -67,11 +67,27 @@
       "quantity": 1
     },
     {
-      "id": 1,
+      "id": "5",
+      "name": "Plastic Wheel",
+      "categories": "FITNESS",
+      "img": "assets/images/plasticwheel.jpeg",
+      "price": 15,
+      "quantity": 1
+    },
+    {
+      "id": "1",
       "name": "Seeds",
       "categories": "FOOD",
       "img": "assets/images/seeds.jpeg",
       "price": 6,
+      "quantity": 4
+    },
+    {
+      "id": "4",
+      "name": "Vitamin",
+      "categories": "CARE",
+      "img": "assets/images/vitamin.jpeg",
+      "price": 10,
       "quantity": 1
     }
   ],
@@ -79,10 +95,13 @@
     {
       "name": "Teste Um",
       "email": "teste@um.com",
-      "passwd": "!QAZ2sx3edc",
+      "password": "!QAZ2sx3edc",
       "repasswd": "!QAZ2sx3edc",
       "check": true,
       "id": 1
     }
+  ],
+  "login": [
+    
   ]
 }

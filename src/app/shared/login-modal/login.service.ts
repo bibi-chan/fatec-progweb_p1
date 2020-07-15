@@ -15,6 +15,7 @@ export class LoginService {
   constructor(private httpClient: HttpClient) {}
 
   url = 'http://localhost:3000/users'; // api rest fake
+  login = 'http://localhost:3000/login'; // api rest fake
   // Headers
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -61,6 +62,19 @@ export class LoginService {
         retry(1),
         catchError(this.handleError)
       );
+  }
+
+  getLogin(): Observable<Login[]> {
+    return this.httpClient.get<Login[]>(this.login)
+      .pipe(
+        retry(2),
+        catchError(this.handleError));
+  }
+
+  addLogin(user: Login): Observable<Login> {
+    return this.httpClient
+      .post<Login>(this.login, JSON.stringify(user), this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError));
   }
 
   // Manipulação de erros
